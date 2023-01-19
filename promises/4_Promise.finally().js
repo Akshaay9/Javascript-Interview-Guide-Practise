@@ -1,25 +1,39 @@
-Promise.prototype.myFinally = function (callback) {
-    if (typeof callback !== "function") {
-      return this.then(callback, callback);
-    }
-  
-    // return the promise and call the callback function
-    // as soon as the promise is rejected or resolved with its value
-    return this.then(() => Promise.resolve(callback()));
-  };
-  
-  const testProm = new Promise((res, rej) => {
-    setTimeout(() => {
-      rej("hey");
-    }, 2000);
+Promise.prototype.myfinally = function (callback) {
+  if (typeof callback !== "function") {
+    return;
+  }
+  return this.then(
+    (res) => Promise.resolve(callback()).then(() => res),
+    (rej) =>
+      Promise.resolve(
+        callback().catch(() => {
+          throw rej;
+        })
+      )
+  );
+};
+
+const p = Promise.resolve(4);
+
+p.then((ele) => {
+  console.log(ele);
+})
+  .myfinally(() => {
+    console.log("finally");
+  })
+  .then(() => {
+    console.log();
   });
-  testProm
-    .then((e) => {
-      console.log("hey");
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .myFinally((err) => {
-      console.log("heyyyyy", err);
-    });
+
+
+const p1 = Promise.rejet(4);
+
+p.then((ele) => {
+  console.log(ele);
+})
+  .myfinally(() => {
+    console.log("finally");
+  })
+  .catch(() => {
+    console.log("ele");
+  });
