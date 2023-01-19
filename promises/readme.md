@@ -2,3 +2,4 @@
 2) Promise.Any()
 3) Prmose.reace()
 4) Promise.finally()
+5) Promise.allSettled()
