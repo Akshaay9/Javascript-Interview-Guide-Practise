@@ -10,3 +10,5 @@
 // 
 
 6) Execute Async function in series
+7) Prmoise in Parallel
+8) Retry after N times
