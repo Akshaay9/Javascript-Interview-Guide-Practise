@@ -45,3 +45,15 @@ const loopIt = async function (promises) {
 };
 
 loopIt([a, b, c]);
+
+// Using Reduce
+const asyncSeriesExecuter = (promises) => {
+  return promises.reduce((acc, currentPromise) => {
+    return acc.then(() => {
+      return currentPromise.then((ele) => console.log(ele));
+    });
+  }, Promise.resolve());
+};
+
+const promises = [a, b, c];
+asyncSeriesExecuter(promises)
