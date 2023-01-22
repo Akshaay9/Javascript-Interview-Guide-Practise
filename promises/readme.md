@@ -12,5 +12,5 @@
 6) Execute Async function in series
 7) Prmoise in Parallel
 8) Retry after N times
-
-10) Map Series Async Function
+9) Map Limit Async function
+10) Map Series Async Function (ALong with Practise IMP)
