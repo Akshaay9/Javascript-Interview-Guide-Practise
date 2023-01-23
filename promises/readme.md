@@ -1,4 +1,4 @@
-- Use Then catch inside Async to execute one by one one of promise instead of try catch with forEach // Or using (num of promises) and async awai
+- Use Then catch inside Async to execute one by one of promise instead of try catch with forEach // Or using (num of promises) and async await
 
 
 1) Promise.All()
@@ -14,3 +14,4 @@
 8) Retry after N times
 9) Map Limit Async function
 10) Map Series Async Function (ALong with Practise IMP)
+12) Async filter function
