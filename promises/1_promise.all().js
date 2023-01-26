@@ -1,3 +1,9 @@
+
+// 2) use for(num of nums) to and try catch to make promises one by one (wont work if there is return new Promise((res,rej)))
+// 3)  use try catch inside foreach to make it parallel 
+
+
+
 const p = new Promise((res) => {
     setTimeout(() => {
       res("hey");
