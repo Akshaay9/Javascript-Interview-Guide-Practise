@@ -1,75 +1,82 @@
+// Implement a mapSeries async function that is similar to the
+// Array.map() but returns a promise that resolves on the list of output
+// by mapping each input through an asynchronous iteratee function or
+// rejects it if any error occurs. The inputs are run in a sequence that is
+// one after another
+
 const chopArr = (arr, num) => {
-    let result = [];
-    let tempResult = [];
-    for (let i = 0; i < arr.length; i++) {
-      const currNum = arr[i];
-      tempResult.push(currNum);
-      if ((i + 1) % num === 0 && i !== 0) {
-        result.push(tempResult);
-        tempResult = [];
-        chopCount = 1;
-      }
+  let result = [];
+  let tempResult = [];
+  for (let i = 0; i < arr.length; i++) {
+    const currNum = arr[i];
+    tempResult.push(currNum);
+    if ((i + 1) % num === 0 && i !== 0) {
+      result.push(tempResult);
+      tempResult = [];
+      chopCount = 1;
     }
-    result.push(tempResult);
-    return result;
-  };
-  
-  const mapSeries = (arr, callBackFun) => {
-    return new Promise((res, rej) => {
-      const final = arr.reduce((acc, ele) => {
-        return acc.then((accProm) => {
-          return new Promise((res, rej) => {
-            callBackFun(ele, (status, result) => {
-              if (status) {
-                res(ele);
-              } else {
-                rej(status, "error");
-              }
-            });
+  }
+  result.push(tempResult);
+  return result;
+};
+
+const mapSeries = (arr, callBackFun) => {
+  return new Promise((res, rej) => {
+    const final = arr.reduce((acc, ele) => {
+      return acc.then((accProm) => {
+        return new Promise((res, rej) => {
+          callBackFun(ele, (status, result) => {
+            if (status) {
+              res(ele);
+            } else {
+              rej(status, "error");
+            }
           });
         });
-      }, Promise.resolve());
-  
-      final
-        .then((ele) => {
-          res(ele);
-        })
-        .catch((err) => {
-          rej(err);
-        });
-    });
-  };
-  
-  let numPromise = mapSeries([1, 2, 3, 4, 5], function (num, callback) {
-    setTimeout(function () {
-      num = num * 2;
-      console.log(num);
-      // throw error
-      if (num === 12) {
-        callback(true);
-      } else {
-        callback(false, num);
-      }
-    }, 1000);
+      });
+    }, Promise.resolve());
+
+    final
+      .then((ele) => {
+        res(ele);
+      })
+      .catch((err) => {
+        rej(err);
+      });
   });
-  
-  numPromise
-    .then((result) => console.log("success:" + result))
-    .catch((err) => console.log("no success", err));
-  
+};
 
-  //  PRACTISE PROBLEM IMPORTANT
+let numPromise = mapSeries([1, 2, 3, 4, 5], function (num, callback) {
+  setTimeout(function () {
+    num = num * 2;
+    console.log(num);
+    // throw error
+    if (num === 12) {
+      callback(true);
+    } else {
+      callback(false, num);
+    }
+  }, 1000);
+});
 
-  const a = (cb) =>
+numPromise
+  .then((result) => console.log("success:" + result))
+  .catch((err) => console.log("no success", err));
+
+//  PRACTISE PROBLEM IMPORTANT
+
+const a = (cb) =>
   setTimeout(() => {
     console.log("a");
     cb("a");
   }, 1000);
+  
 const b = (cb) =>
   setTimeout(() => {
     console.log("b");
     cb("b");
   }, 1000);
+
 const c = (cb) =>
   setTimeout(() => {
     console.log("c");

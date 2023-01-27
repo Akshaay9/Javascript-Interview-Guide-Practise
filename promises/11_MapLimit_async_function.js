@@ -1,3 +1,10 @@
+// vImplement a mapLimit function that is similar to the Array.map() but
+// returns a promise that resolves on the list of output by mapping each
+// input through an asynchronous iteratee function or rejects it if any
+// error occurs. It also accepts a limit to decide how many operations can
+// occur at a time.
+
+
 //  ERROR is there but focus on APPROACH DUDE
 
 const chopArr = (arr, num) => {

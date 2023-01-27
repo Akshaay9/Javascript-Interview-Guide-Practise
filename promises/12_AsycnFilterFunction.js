@@ -1,3 +1,8 @@
+// Implement a function that takes an array of input and an async
+// iteratee function and returns a promise that resolves with the list of
+// inputs that has passed the test through the iteratee function.
+
+
 const filter = (arr, fun) => {
     return new Promise((res, rej) => {
       let count = 0;
