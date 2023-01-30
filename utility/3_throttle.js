@@ -26,7 +26,7 @@ const throttle = (timer, callbackfun) => {
 
 
 // TIMER
-const throttle = (timer, callbackfun) => {
+const throttle1 = (timer, callbackfun) => {
   return function () {
     const currentTimer = this.presentCall;
     this.presentCall = Date.now();
@@ -39,11 +39,11 @@ const throttle = (timer, callbackfun) => {
   };
 };
 
-const callBack = (arg) => {
+const callBack1 = (arg) => {
   console.log("Hey", arg);
 };
 
-const throttleIt = throttle(1000, callBack);
+const throttleIt1 = throttle(1000, callBack1);
 throttleIt("1");
 throttleIt("2");
 throttleIt("3");
