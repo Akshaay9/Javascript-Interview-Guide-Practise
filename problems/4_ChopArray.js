@@ -18,3 +18,21 @@ const chopArray = (arr, len) => {
 };
 
 console.log(chopArray(arr, chopLength));
+
+const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const chopLength1 = 3;
+
+const chopArray1 = (arr, len) => {
+  let i = 0;
+  let result = [];
+  while (i < arr.length) {
+    const currResult = arr.slice(i, i + len);
+    result.push(currResult);
+    i = i + len;
+  }
+  return result;
+};
+
+console.log(chopArray1(arr1, chopLength1));
+
+
