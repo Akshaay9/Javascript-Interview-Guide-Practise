@@ -12,7 +12,7 @@ const p = new Promise((res, rej) => {
     }, 3000);
   });
   
-  // Default PROMISE.ALL()
+  // Default PROMISE.any()
   
   Promise.any([p, p2, p3])
     .then((ele) => {
