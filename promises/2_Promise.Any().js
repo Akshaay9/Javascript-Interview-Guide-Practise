@@ -1,3 +1,6 @@
+// Resolve first promise
+// if all rejected then  [AggregateError: All promises were rejected]
+
 const p = new Promise((res, rej) => {
     setTimeout(() => {
       rej("hey");
