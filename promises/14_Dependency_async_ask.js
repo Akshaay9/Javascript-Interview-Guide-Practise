@@ -49,15 +49,20 @@ const processA = new Task(null, (done) => {
     done();
   }, 100);
 });
-
 const processB = new Task([processA], (done) => {
   setTimeout(() => {
     console.log("Process B");
     done();
   }, 1500);
 });
+const processC = new Task(null, (done) => {
+  setTimeout(() => {
+    console.log("Process C");
+    done();
+  }, 1000);
+});
 
-const arr = [processB];
+const arr = [processA, processB, processC];
 
 const createAllDoneInstance = (done) => new Task(arr, done);
 
