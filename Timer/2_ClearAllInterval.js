@@ -1,4 +1,6 @@
-window.timerID = [];
+//codesandbox.io/s/ancient-water-8l4v12?file=/src/index.js
+
+https: window.timerID = [];
 
 const mytimeInterval = window.setInterval;
 
