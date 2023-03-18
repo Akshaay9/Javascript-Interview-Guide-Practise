@@ -1,3 +1,5 @@
+// https://codesandbox.io/s/hopeful-oskar-p8r19b?file=/src/index.js
+
 const originalFetch = window.fetch;
 
 const requestInterceptor = (requestArguments) => {
