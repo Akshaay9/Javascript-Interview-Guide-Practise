@@ -1,6 +1,3 @@
-ToDo : 
-Promises Polyfill
-LRU cache
+ToDo :
 stacks, queue
-32,33,34
 
