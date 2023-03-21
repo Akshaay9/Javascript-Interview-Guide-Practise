@@ -38,3 +38,49 @@ const arr = [
   
   const a = convertRelation(result);
   console.log(a);
+
+
+  //or//
+  
+  const entityRelation = (arr) => {
+    const aggregate = (arr) => {
+      return arr.reduce((acc, ele) => {
+        const [key, value] = ele;
+        acc[key] = value;
+        return acc;
+      }, {});
+    };
+  
+    const recursive = (obj, key) => {
+      const val = obj[key];
+  
+      if (val in obj) {
+        return recursive(obj, val) + "->" + key;
+      } else {
+        return val + "->" + key;
+      }
+    };
+  
+    const segregate = (obj) => {
+      return Object.keys(obj).reduce((acc, ele) => {
+        acc.push(recursive(obj, ele));
+        return acc;
+      }, []);
+    };
+  
+    const obj = aggregate(arr);
+  
+    return segregate(obj);
+  };
+  
+  const arr = [
+    ["lion", "cat"],
+    ["cat", "mammal"],
+    ["dog", "mammal"],
+    ["mammal", "animal"],
+    ["fish", "animal"],
+    ["shark", "fish"],
+  ];
+  
+  console.log(entityRelation(arr));
+  

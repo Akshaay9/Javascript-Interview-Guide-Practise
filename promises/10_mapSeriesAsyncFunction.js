@@ -5,6 +5,7 @@
 // one after another
 
 //  PRACTISE PROBLEM IMPORTANT
+// ONE AFTER ANOTHER
 
 const a = (cb) =>
   setTimeout(() => {
@@ -16,7 +17,7 @@ const b = (cb) =>
   setTimeout(() => {
     console.log("b");
     cb("b");
-  }, 1000);
+  }, 100);
 
 const c = (cb) =>
   setTimeout(() => {
