@@ -17,4 +17,27 @@ const toggleFun = (...args) => {
   toggle2(); //Hi
   toggle2(); // Hello
   toggle2(); // Hi
+
+
+  //   OR
+
+  const toggleFun = (...args) => {
+    let count = -1;
+  
+    return () => {
+      count = (count + 1) % args.length;
+      console.log(args[count]);
+    };
+  };
+  
+  const toggle = toggleFun("Hello");
+  toggle(); // Hello
+  toggle(); //Hello
+  toggle(); // Hello
+  
+  const toggle2 = toggleFun("Hello", "Hi");
+  toggle2(); // Hello
+  toggle2(); //Hi
+  toggle2(); // Hello
+  toggle2(); // Hi
   
