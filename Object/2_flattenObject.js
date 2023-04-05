@@ -32,3 +32,28 @@ const obj = {
   
   console.log(recurse(obj));
   
+  /// OROROROROROR
+
+  const flattenObj = (objV) => {
+    let obj = {};
+  
+    const processsing = (collection, keyParam = "") => {
+      for (let key in collection) {
+        const objKey = keyParam ? `${keyParam}.${key}` : `${key}`;
+        if (typeof collection[key] === "object") {
+          processsing(collection[key], objKey);
+        } else {
+          obj = {
+            ...obj,
+            [objKey]: collection[key],
+          };
+        }
+      }
+    };
+  
+    processsing(objV);
+  
+    return obj;
+  };
+  
+  console.log(flattenObj(obj));
