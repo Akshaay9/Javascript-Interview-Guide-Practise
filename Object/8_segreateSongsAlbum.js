@@ -35,4 +35,6 @@ let test = [
     return result;
   };
   console.log(segreGate(test));
+
+  // { shit: [ 'hello', 'damn' ], shit2: [ 'hello', 'hello2' ] }
   
