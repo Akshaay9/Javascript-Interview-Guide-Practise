@@ -42,7 +42,7 @@ const arr = [
 
   //or//
   
-  const entityRelation = (arr) => {
+  const entityRelation1 = (arr) => {
     const aggregate = (arr) => {
       return arr.reduce((acc, ele) => {
         const [key, value] = ele;
