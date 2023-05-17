@@ -24,4 +24,29 @@ const curryMultiply = (fn) => {
   console.log(curryIt(1)(2, 3));
   console.log(curryIt(1)(2)(3));
   console.log(curryIt(1, 2)(3));
+
+  //  OROROROORORORORO
+
+  var curry = function (fn) {
+    return function curried(...args) {
+      if (args.length >= fn.length) {
+        return fn(...args);
+      } else {
+        return function getArgs(...args2) {
+          return curried(...args, ...args2);
+        };
+      }
+    };
+  };
+  
+  function sum(a, b, c) {
+    return a + b + c;
+  }
+  
+  const csum = curry(sum);
+  console.log(csum(1, 2, 3));
+  console.log(csum(1)(2, 3));
+  console.log(csum(1)(2)(3));
+  console.log(csum(1, 2)(3));
+  
   
