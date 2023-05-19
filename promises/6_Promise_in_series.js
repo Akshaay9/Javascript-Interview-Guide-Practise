@@ -31,6 +31,25 @@ const recurse = (promises) => {
 };
 recurse([a, b, c]);
 
+//  RECURSION
+const recurse = (promises, n) => {
+  if (n >= promises.length) {
+    return;
+  }
+  const currPromise = promises[n];
+
+  currPromise
+    .then((ele) => {
+      console.log(ele);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      recurse(promises, (n += 1));
+    });
+};
+
 // For Of Loop
 
 const loopIt = async function (promises) {
