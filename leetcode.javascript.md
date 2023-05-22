@@ -4,3 +4,4 @@
 4) Infinite Curry : https://leetcode.com/problems/curry/solutions/
 5) Counter : https://leetcode.com/problems/counter/
 6) Sleep : https://leetcode.com/problems/sleep/description/
+7) Counter 2 : https://leetcode.com/problems/counter-ii/
