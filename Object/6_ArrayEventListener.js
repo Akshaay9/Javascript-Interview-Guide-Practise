@@ -9,7 +9,6 @@ Array.prototype.addListener = function (name, callback) {
 };
 
 Array.prototype.pushWithEvent = function (name, arrays) {
-  this.push(...arrays);
   this.listenEvent(name, arrays);
 };
 
