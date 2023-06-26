@@ -36,4 +36,30 @@ const input = {
   };
   
   console.log(filter(input, callback));
+
+
+  //  OROROROOROROROROR BETTTTTTER WAY. ?////
+
+  const deepFIlter = (input, callback) => {
+    //
+    const processing = (obj) => {
+      for (let key in obj) {
+        if (typeof obj[key] === "object") {
+          processing(obj[key]);
+        } else {
+          if (callback(obj[key]) === false) {
+            delete obj[key];
+          }
+        }
+        if (obj[key] && Object.keys(obj[key]).length === 0) {
+          delete obj[key];
+        }
+      }
+    };
+  
+    processing(input);
+    return input;
+  };
+  
+  console.log(deepFIlter(input, callback));
   
