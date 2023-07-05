@@ -13,7 +13,7 @@ function stringify(data) {
       return `"${data}"`;
     }
     if (typeof data === "object" && Array.isArray(data)) {
-      return `"[${data.map((ele) => stringify(ele))}]"`;
+      return `"[${data.map((ele) => stringify(ele)).join(",")}]"`;
     } else if (typeof data === "object") {
       const keys = Object.keys(data);
       const keyValuePairs = keys.map(
