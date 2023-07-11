@@ -10,7 +10,6 @@ const leadingDebounce = (fn, timer) => {
       }
       clearTimeout(timerid);
       timerid = setTimeout(() => {
-        fn.call(this, ...args);
         timerid = null;
       }, timer);
     };
